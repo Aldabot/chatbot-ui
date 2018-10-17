@@ -19,8 +19,8 @@ const HumanContainer = styled.div`
 
 const Message = (props) => {
   if (props.user)
-    return (<HumanContainer>Test</HumanContainer>)
-  return <BotContainer>Test</BotContainer>
+    return (<HumanContainer>{props.text}</HumanContainer>)
+  return <BotContainer>{props.text}</BotContainer>
 }
 
 export default Message
