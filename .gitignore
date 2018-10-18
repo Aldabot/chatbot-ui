@@ -1,19 +1,8 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 node_modules
-<<<<<<< HEAD
 
 # production
 dist
-=======
-
-# testing
-coverage
-
-# production
-build
->>>>>>> eb380d7573781bd6d799614728a9f4ab25dc6f76
 
 # misc
 .DS_Store
