@@ -6,11 +6,7 @@ import Input from './Input'
 
 const client = axios.create({
   baseURL: 'https://tjh05l55r4.execute-api.eu-west-1.amazonaws.com/dev',
-<<<<<<< HEAD
-  timeout: 5000
-=======
   timeout: 5000,
->>>>>>> eb380d7573781bd6d799614728a9f4ab25dc6f76
 })
 
 const Container = styled.div`
