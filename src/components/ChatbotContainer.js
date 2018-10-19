@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import Message from './Message'
 import Input from './Input'
 
@@ -16,21 +16,34 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
-  background-color: black;
+  background-color: white;
   overflow: hidden;
+  border-radius: ${({theme}) => theme.borderRadius };
+  border: 1px solid ${props => props.theme.main};
+  box-shadow: 0 4px 8px 0 #3cb2d6, 0 6px 20px 0 ${props => props.theme.main};
 `
 
 const MessageContainer = styled.div`
   width: 100%;
   height: 400px;
   max-heigth: 400px;
-  background-color: gray;
+  background-color: white;
   margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
   overflow: scroll;
+  font-family: ${({theme}) => theme.fontFamily};
+  font-size: ${({theme}) => theme.fontSize};
+  margin-bottom: 10px;
 `
+
+const theme = {
+  main: '#3cb2d6',
+  mainHover: '#25749e',
+  user: '#f0b17d',
+  userHover: '#daa172',
+  fontFamily: 'system-ui',
+  fontSize: '1.4rem',
+  borderRadius: '2px',
+}
 
 class ChatbotContainer extends Component {
   state = {
@@ -76,14 +89,16 @@ class ChatbotContainer extends Component {
 
   render() {
     return (
-      <Container>
-        <MessageContainer id="messages">
-          {this.state.messages.map(msg =>
-            <Message {...msg} />
-          )}
-        </MessageContainer>
-        <Input addMessage={this.addMessage} />
-      </Container>
+      <ThemeProvider theme={theme}>
+        <Container>
+          <MessageContainer id="messages">
+            {this.state.messages.map((msg, i) =>
+              <Message key={i} {...msg} />
+            )}
+          </MessageContainer>
+          <Input addMessage={this.addMessage} />
+        </Container>
+      </ThemeProvider>
     )
   }
 }
