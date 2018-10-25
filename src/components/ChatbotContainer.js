@@ -5,9 +5,15 @@ import { faComment, faTimes } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  position: absolute;
-  bottom: 100px;
-  right: 26px;
+  position: fixed;
+  bottom: 0px;
+  right: 20vw;
+  width: 300px;
+  height: 100px;
+  border-width: 2px 2px 0 2px;
+  border-style: solid;
+  border-radius: 15px 15px 0 0;
+  background-color: white;
 `
 
 const IconContainer = styled.div`
@@ -29,6 +35,23 @@ const Icon = styled(FontAwesomeIcon)`
   margin: auto;
 `
 
+const Avatar = styled.img`
+  margin: 20px 0 0 20px;
+  height: 60px;
+  border-radius: 50%;
+`
+
+const Button = styled.button`
+  font-size: 25px;
+  font-weight: bold;
+  transform: translateY(-19px);
+  margin-left: 35px;
+  background-color: #4085de;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+`
+
 class ChatbotContainer extends Component {
   state = {
     open: true,
@@ -42,13 +65,21 @@ class ChatbotContainer extends Component {
     return (
       <Fragment>
         <Container>
-            { this.state.open && <ChatBox /> }
+          <Avatar
+            src="https://assets.dryicons.com/uploads/icon/svg/7790/60371561-878d-4738-a0c5-969635eba49a.svg"
+          />
+          <Button>
+            Preguntar
+          </Button>
         </Container>
-        <IconContainer>
-          <Icon icon={
+        {/* <Container>
+            { this.state.open && <ChatBox /> }
+            </Container>
+            <IconContainer>
+            <Icon icon={
             this.state.open ? faTimes : faComment
-          } onClick={this.openCloseChat} />
-        </IconContainer>
+            } onClick={this.openCloseChat} />
+            </IconContainer> */}
       </Fragment>
     )
   }

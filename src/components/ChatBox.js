@@ -28,7 +28,7 @@ const Header = styled.div`
   text-align: center;
   color: white;
   font-size: ${({theme}) => theme.fontSize };
-  background-color: ${({theme}) => theme.}
+  background-color: ${({theme}) => theme.main };
 `
 
 const MessageContainer = styled.div`
