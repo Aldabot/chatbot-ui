@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import styled, { ThemeProvider } from 'styled-components'
+import moment from 'moment'
 import Message from './Message'
 import Input from './Input'
 
@@ -10,37 +11,20 @@ const client = axios.create({
 })
 
 const Container = styled.div`
-  padding: 10px;
-  width: 500px;
-  margin: auto;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
-  background-color: white;
   overflow: hidden;
-  border-radius: ${({theme}) => theme.borderRadius };
-  border: 1px solid ${props => props.theme.main};
-  box-shadow: 0 4px 8px 0 #3cb2d6, 0 6px 20px 0 ${props => props.theme.main};
-`
-
-const Header = styled.div`
-  width: 100%;
-  text-align: center;
-  color: white;
-  font-size: ${({theme}) => theme.fontSize };
-  background-color: ${({theme}) => theme.main };
+  font-family: system-ui;
 `
 
 const MessageContainer = styled.div`
   width: 100%;
-  height: 35vh;
-  max-heigth: 700px;
-  background-color: white;
-  margin: auto;
+  height: 85%;
+  padding: 15px;
   overflow: scroll;
-  font-family: ${({theme}) => theme.fontFamily};
-  font-size: ${({theme}) => theme.fontSize};
-  margin-bottom: 10px;
 `
 
 const theme = {
@@ -53,20 +37,36 @@ const theme = {
   borderRadius: '2px',
 }
 
+const Button = styled.button`
+  position: absolute;
+  right: 0;
+  height: 40px;
+  width: 40px;
+  background-color: #4085de;
+  border-radius: 12px;
+  margin: 6px 6px 0 0;
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+`
+
 class ChatBox extends Component {
   state = {
     messages: [
       {
         text: 'Hola',
-        user: false
+        user: false,
+        timestamp: moment(),
       },
       {
         text: 'Hola!',
-        user: true
+        user: true,
+        timestamp: moment(),
       },
       {
         text: 'Que tal?',
-        user: false
+        user: false,
+        timestamp: moment(),
       }
     ]
   }
@@ -99,15 +99,13 @@ class ChatBox extends Component {
     return (
       <ThemeProvider theme={theme}>
         <Container>
-          <Header>
-            Aguas Chat
-          </Header>
           <MessageContainer id="messages">
             {this.state.messages.map((msg, i) =>
               <Message key={i} {...msg} />
             )}
           </MessageContainer>
           <Input addMessage={this.addMessage} />
+          <Button onClick={this.props.closeChat}>X</Button>
         </Container>
       </ThemeProvider>
     )

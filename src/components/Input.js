@@ -4,7 +4,7 @@ import styled from 'styled-components'
  * import { faPaperPlane } from '@fortawesome/free-solid-svg-icons' */
 
 const InputContainer = styled.div`
-  flex-basis: 100%;
+  width: 100%;
   border-top: solid 2px ${({theme}) => theme.main};
   padding: 20px 10px 10px 10px;
   background-color: white;
