@@ -23,7 +23,7 @@ const Container = styled.div`
 const MessageContainer = styled.div`
   width: 100%;
   height: 85%;
-  padding: 15px;
+  padding: 0 15px 0 15px;
   overflow: scroll;
 `
 
@@ -48,27 +48,19 @@ const Button = styled.button`
   font-size: 22px;
   color: white;
   font-weight: bold;
+  cursor: pointer;
+  &:hover{
+    background-color: #4691f2;
+  }
 `
 
 class ChatBox extends Component {
   state = {
-    messages: [
-      {
-        text: 'Hola',
-        user: false,
-        timestamp: moment(),
-      },
-      {
-        text: 'Hola!',
-        user: true,
-        timestamp: moment(),
-      },
-      {
-        text: 'Que tal?',
-        user: false,
-        timestamp: moment(),
-      }
-    ]
+    messages: [{
+      user: false,
+      text: <span>Soy el Chatbot de Aigues. <br /> Por favor, pregúntame algo 😊</span>,
+      time: moment(),
+    }]
   }
 
   addMessage = async (text) => {
@@ -79,7 +71,6 @@ class ChatBox extends Component {
         sessionId: '1'
       })
       for(const msg of data) {
-        console.log(msg)
         this.addMessageAndScroll(msg.text.text[0], false)
       }
     } catch(err) {
@@ -89,7 +80,7 @@ class ChatBox extends Component {
 
   addMessageAndScroll = (text, user) => {
     this.setState({
-      messages: this.state.messages.concat({ text, user })
+      messages: this.state.messages.concat({ text, user, time: moment() })
     })
     const objDiv = document.getElementById("messages");
     objDiv.scrollTop = objDiv.scrollHeight;

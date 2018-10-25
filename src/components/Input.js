@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const InputContainer = styled.div`
   width: 100%;
-  border-top: solid 2px ${({theme}) => theme.main};
+  border-top: solid 1px #4085de;
   padding: 20px 10px 10px 10px;
   background-color: white;
   display: flex;
@@ -14,12 +14,12 @@ const InputContainer = styled.div`
 
 const TextInput = styled.input`
   font-size: ${({theme}) => theme.fontSize };
-  color: ${({theme}) => theme.user};
+  color: #4085de;
   width: 68%
   padding: 0 10px 0 10px;
-  border: solid ${({theme}) => theme.user };
+  border: solid #4085de;
   &::placeholder {
-    color: ${({theme}) => theme.user };
+    color: #4085de;
     opacity: 0.7;
   }
 `
@@ -27,12 +27,12 @@ const TextInput = styled.input`
 const SendBtn = styled.button`
   font-size: ${({theme}) => theme.fontSize };
   border: 0;
-  background-color: ${({theme}) => theme.user };
+  background-color: #4085de;
   color: white;
   padding: 10px;
   cursor: pointer;
   &:hover {
-    background-color: ${({theme}) => theme.userHover };
+    background-color: #4691f2;
   };
 `
 

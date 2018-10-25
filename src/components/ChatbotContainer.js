@@ -7,15 +7,15 @@ const Container = styled.div`
   bottom: 0px;
   right: 5vw;
   width: ${({open}) => open ? '500px' : '300px'};
-  height: ${({open}) => open ? '500px' : '100px'};
-  border-width: 2px 2px 0 2px;
-  border-style: solid;
+  height: ${({open}) => open ? '500px' : '70px'};
   border-radius: 15px 15px 0 0;
   background-color: white;
+  padding: 15px 0 15px 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `
 
 const Avatar = styled.img`
-  margin: 20px 0 0 20px;
+  margin: 12px 0 0 25px;
   height: 60px;
   border-radius: 50%;
   display: ${({open}) => open ? 'none' : 'inline'};
@@ -24,13 +24,17 @@ const Avatar = styled.img`
 const Button = styled.button`
   font-size: 25px;
   font-weight: bold;
-  margin-top: 25px;
+  margin-top: 16px;
   margin-right: 35px;
   background-color: #4085de;
   color: white;
   border-radius: 10px;
   padding: 10px;
   float: right;
+  cursor: pointer;
+  &:hover{
+  background-color: #4691f2;
+  }
 `
 
 class ChatbotContainer extends Component {
