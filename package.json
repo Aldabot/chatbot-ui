@@ -2,7 +2,7 @@
   "name": "alda-chatbot-ui",
   "main": "./dist/main.js",
   "author": "Dirk Hornung <dirkhornung91@gmail.com>",
-  "version": "0.1.5",
+  "version": "0.1.8",
   "licencse": "MIT",
   "peerDependencies": {
     "react": ">=15.6.2",
@@ -24,6 +24,7 @@
     "path": "^0.12.7",
     "react": ">=15.6.2",
     "react-dom": ">=15.6.2",
+    "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.21.0",
     "webpack-cli": "^3.1.2"
   },

@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  entry: path.join(__dirname, './index.js'),
+  entry: path.join(__dirname, './src/index.js'),
   output: {
     path: path.join(__dirname, './dist'),
     filename: 'main.js',
@@ -26,7 +26,7 @@ module.exports = {
               ['@babel/preset-env',
                {
                  targets: {
-                   node: "8.10"
+                   node: 8
                  }
                }],
               '@babel/preset-react'

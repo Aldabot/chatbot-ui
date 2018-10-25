@@ -34,6 +34,7 @@ module.exports = {
     extensions: ['*', '.js', '.jsx']
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    watchContentBase: true
   }
 }

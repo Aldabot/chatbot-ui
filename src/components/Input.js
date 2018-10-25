@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+/* import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+ * import { faPaperPlane } from '@fortawesome/free-solid-svg-icons' */
 
 const InputContainer = styled.div`
   flex-basis: 100%;
@@ -11,10 +11,11 @@ const InputContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `
+
 const TextInput = styled.input`
   font-size: ${({theme}) => theme.fontSize };
   color: ${({theme}) => theme.user};
-  width: 75%
+  width: 68%
   padding: 0 10px 0 10px;
   border: solid ${({theme}) => theme.user };
   &::placeholder {
@@ -56,7 +57,8 @@ class Message extends Component {
           placeholder="Preguntame algo!"
         />
         <SendBtn id="sendBtn" onClick={this.sendMessage}>
-          Preguntar <FontAwesomeIcon icon={faPaperPlane} size="lg"/>
+          Preguntar
+          {/* <FontAwesomeIcon icon={faPaperPlane} size="lg"/> */}
         </SendBtn>
       </InputContainer>
     )
