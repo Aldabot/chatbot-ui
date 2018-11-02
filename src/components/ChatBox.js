@@ -61,6 +61,7 @@ const Button = styled.button`
     right: 0;
     top: 0;
     border-radius: 0 15px 0 0;
+    text-align: center;
   }
 `
 

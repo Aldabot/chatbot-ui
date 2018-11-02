@@ -14,8 +14,8 @@ const Container = styled.div`
   z-index: 10000;
 
   @media ( max-width: 768px ) {
-    width: ${({open}) => open ? '100vw' : '120px'};
-    height: ${({open}) => open ? '90vh' : '60px'};
+    width: ${({open}) => open ? '95vw' : '120px'};
+    height: ${({open}) => open ? '85vh' : '60px'};
     right: ${({open}) => open ? '0' : '5vw'};
   }
 `
