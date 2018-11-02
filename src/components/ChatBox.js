@@ -4,9 +4,10 @@ import styled, { ThemeProvider } from 'styled-components'
 import moment from 'moment'
 import Message from './Message'
 import Input from './Input'
+import { v4 } from 'uuid'
 
 const client = axios.create({
-  baseURL: 'https://tjh05l55r4.execute-api.eu-west-1.amazonaws.com/dev',
+  baseURL: 'http://labzener1.taisa.com/ab/chatbot',
   timeout: 5000,
 })
 
@@ -21,8 +22,9 @@ const Container = styled.div`
 `
 
 const MessageContainer = styled.div`
+  margin-top: 3%;
   width: 100%;
-  height: 85%;
+  height: 80%;
   padding: 0 15px 0 15px;
   overflow: scroll;
 `
@@ -39,18 +41,26 @@ const theme = {
 
 const Button = styled.button`
   position: absolute;
-  right: 0;
-  height: 40px;
-  width: 40px;
+  top: -3%;
+  right: -3%;
+  height: 50px;
+  width: 50px;
   background-color: #4085de;
-  border-radius: 12px;
-  margin: 6px 6px 0 0;
-  font-size: 22px;
+  border-radius: 50%;
+  font-size: 24px;
   color: white;
   font-weight: bold;
   cursor: pointer;
   &:hover{
     background-color: #4691f2;
+  }
+
+  @media ( max-width: 1000px) {
+    height: 35px;
+    width: 35px;
+    right: 0;
+    top: 0;
+    border-radius: 0 15px 0 0;
   }
 `
 
@@ -66,13 +76,11 @@ class ChatBox extends Component {
   addMessage = async (text) => {
     this.addMessageAndScroll(text, true)
     try {
-      const { data } = await client.post('/dialogflow', {
+      const { data } = await client.post('/chat', {
         query: text,
-        sessionId: '1'
+        sessionId: v4()
       })
-      for(const msg of data) {
-        this.addMessageAndScroll(msg.text.text[0], false)
-      }
+      this.addMessageAndScroll(data.response, false)
     } catch(err) {
       console.error(err)
     }

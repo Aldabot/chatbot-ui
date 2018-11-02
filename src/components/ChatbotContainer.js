@@ -7,24 +7,34 @@ const Container = styled.div`
   bottom: 0px;
   right: 5vw;
   width: ${({open}) => open ? '500px' : '300px'};
-  height: ${({open}) => open ? '500px' : '70px'};
+  height: ${({open}) => open ? '500px' : '100px'};
   border-radius: 15px 15px 0 0;
   background-color: white;
-  padding: 15px 0 15px 0;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 10000;
+
+  @media ( max-width: 768px ) {
+    width: ${({open}) => open ? '100vw' : '120px'};
+    height: ${({open}) => open ? '90vh' : '60px'};
+    right: ${({open}) => open ? '0' : '5vw'};
+  }
 `
 
 const Avatar = styled.img`
-  margin: 12px 0 0 25px;
+  margin: 20px 0 0 25px;
   height: 60px;
   border-radius: 50%;
   display: ${({open}) => open ? 'none' : 'inline'};
+
+  @media ( max-width: 768px ) {
+    display: none;
+  }
 `
 
 const Button = styled.button`
   font-size: 25px;
   font-weight: bold;
-  margin-top: 16px;
+  margin-top: 24px;
   margin-right: 35px;
   background-color: #4085de;
   color: white;
@@ -33,13 +43,19 @@ const Button = styled.button`
   float: right;
   cursor: pointer;
   &:hover{
-  background-color: #4691f2;
+    background-color: #4691f2;
+  }
+
+  @media ( max-width: 768px ) {
+    font-size: 15px;
+    margin-top: 12px;
+    margin-right: 12px;
   }
 `
 
 class ChatbotContainer extends Component {
   state = {
-    open: true,
+    open: false,
   }
 
   openChat = () => {
@@ -55,7 +71,7 @@ class ChatbotContainer extends Component {
 
     return (
       <Fragment>
-        <Container open={open}>
+        <Container open={open} >
           <Avatar
             src="https://assets.dryicons.com/uploads/icon/svg/7790/60371561-878d-4738-a0c5-969635eba49a.svg"
             open={open}

@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 const InputContainer = styled.div`
   width: 100%;
+  margin-bottom: 2%;
   border-top: solid 1px #4085de;
   padding: 20px 10px 10px 10px;
   background-color: white;
@@ -22,6 +23,10 @@ const TextInput = styled.input`
     color: #4085de;
     opacity: 0.7;
   }
+
+  @media ( max-width: 768px) {
+    font-size: 15px;
+  }
 `
 
 const SendBtn = styled.button`
@@ -34,6 +39,10 @@ const SendBtn = styled.button`
   &:hover {
     background-color: #4691f2;
   };
+
+  @media ( max-width: 768px) {
+    font-size: 15px;
+  }
 `
 
 class Message extends Component {
