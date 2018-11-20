@@ -1,3 +1,5 @@
-import ChatbotContainer from './components/ChatbotContainer.js'
+import App from './app.js'
+import './i18n'
 
-export default ChatbotContainer
+export default App
+

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { withNamespaces } from 'react-i18next'
 /* import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
  * import { faPaperPlane } from '@fortawesome/free-solid-svg-icons' */
 
@@ -58,15 +59,17 @@ class Message extends Component {
   }
 
   render() {
+    const { t } = this.props
+
     return (
       <InputContainer>
         <TextInput
           id="textInput"
           onKeyPress={this.handleKeyPress}
-          placeholder="Preguntame algo!"
+          placeholder={t('Preguntame algo')+'!'}
         />
         <SendBtn id="sendBtn" onClick={this.sendMessage}>
-          Preguntar
+          {t('Preguntar')}
           {/* <FontAwesomeIcon icon={faPaperPlane} size="lg"/> */}
         </SendBtn>
       </InputContainer>
@@ -74,4 +77,4 @@ class Message extends Component {
   }
 }
 
-export default Message
+export default withNamespaces()(Message)

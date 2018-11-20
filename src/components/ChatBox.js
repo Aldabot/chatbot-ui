@@ -5,9 +5,10 @@ import moment from 'moment'
 import Message from './Message'
 import Input from './Input'
 import { v4 } from 'uuid'
+import { withNamespaces } from 'react-i18next'
 
 const client = axios.create({
-  baseURL: 'http://labzener1.taisa.com/ab/chatbot',
+  baseURL: 'http://labzener1.taisa.com/ab/chatbot/chat', //window.chatbotApiEndpoint,
   timeout: 5000,
 })
 
@@ -66,18 +67,24 @@ const Button = styled.button`
 `
 
 class ChatBox extends Component {
-  state = {
-    messages: [{
-      user: false,
-      text: <span>Soy el Chatbot de Aigues. <br /> Por favor, pregúntame algo 😊</span>,
-      time: moment(),
-    }]
+  constructor(props) {
+    super(props)
+
+    const { t } = props
+
+    this.state = {
+      messages: [{
+        user: false,
+        text: <span>{t('Soy el Chatbot de Aigues')}.<br />{t('Por favor, pregúntame algo')}😊</span>,
+        time: moment(),
+      }]
+    }
   }
 
   addMessage = async (text) => {
     this.addMessageAndScroll(text, true)
     try {
-      const { data } = await client.post('/chat', {
+      const { data } = await client.post('/', {
         query: text,
         sessionId: v4()
       })
@@ -112,4 +119,4 @@ class ChatBox extends Component {
   }
 }
 
-export default ChatBox
+export default withNamespaces()(ChatBox)

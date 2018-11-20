@@ -1,8 +1,16 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
+import { withNamespaces } from 'react-i18next'
 import moment from 'moment'
 import 'moment/locale/es'
-moment.locale('es')
+import 'moment/locale/ca'
+
+if(window.chatbotLanguage === 'ca_ES') {
+  moment.locale('ca')
+} else {
+  moment.locale('es')
+}
+
 
 const MessageContainer = styled.div`
   display: flex;
@@ -45,7 +53,7 @@ const Divider = styled.hr`
 `
 
 const MessageRow = (props) => {
-  const { user } = props
+  const { user, t } = props
   return (
     <Fragment>
       <MessageContainer>
@@ -53,9 +61,9 @@ const MessageRow = (props) => {
           src="https://assets.dryicons.com/uploads/icon/svg/7790/60371561-878d-4738-a0c5-969635eba49a.svg"
         />
         <Sender>
-          <SenderHeader>Enviada por:</SenderHeader>
+          <SenderHeader>{t('Enviada por')}:</SenderHeader>
           <SenderName>
-            {user ? 'Usario anónimo' : 'Aigues Chatbot'}
+            {user ? t('Usario anónimo') : 'Aigues Chatbot'}
           </SenderName>
           <Time>
             {moment(props.timestamp).calendar()}
@@ -63,7 +71,7 @@ const MessageRow = (props) => {
         </Sender>
         <MsgBox>
           <MsgHeader>
-            { props.user ? 'Pregunta' : 'Respuesta'}
+            { props.user ? 'Pregunta' : t('Respuesta')}
           </MsgHeader>
           {props.text}
         </MsgBox>
@@ -73,4 +81,4 @@ const MessageRow = (props) => {
   )
 }
 
-export default MessageRow
+export default withNamespaces()(MessageRow)

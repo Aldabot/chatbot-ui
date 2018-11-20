@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import ChatBox from './ChatBox'
 import styled from 'styled-components'
+import { withNamespaces } from 'react-i18next'
 
 const Container = styled.div`
   position: fixed;
@@ -68,6 +69,7 @@ class ChatbotContainer extends Component {
 
   render() {
     const { open } = this.state
+    const { t } = this.props
 
     return (
       <Fragment>
@@ -76,7 +78,7 @@ class ChatbotContainer extends Component {
             src="https://assets.dryicons.com/uploads/icon/svg/7790/60371561-878d-4738-a0c5-969635eba49a.svg"
             open={open}
           />
-          { !open && <Button onClick={this.openChat}>Preguntar</Button>}
+          { !open && <Button onClick={this.openChat}>{t('Preguntar')}</Button>}
           { this.state.open && <ChatBox closeChat={this.closeChat} /> }
         </Container>
       </Fragment>
@@ -84,4 +86,4 @@ class ChatbotContainer extends Component {
   }
 }
 
-export default ChatbotContainer
+export default withNamespaces()(ChatbotContainer)
