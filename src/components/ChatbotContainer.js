@@ -7,8 +7,8 @@ const Container = styled.div`
   position: fixed;
   bottom: 0px;
   right: 5vw;
-  width: ${({open}) => open ? '500px' : '300px'};
-  height: ${({open}) => open ? '500px' : '100px'};
+  width: ${({open}) => open  ? '500px' : '190px'};
+  height: ${({open}) => open ? '500px' : '70px'};
   border-radius: 15px 15px 0 0;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -22,8 +22,8 @@ const Container = styled.div`
 `
 
 const Avatar = styled.img`
-  margin: 20px 0 0 25px;
-  height: 60px;
+  margin: 10px 0 0 11px;
+  height: 50px;
   border-radius: 50%;
   display: ${({open}) => open ? 'none' : 'inline'};
 
@@ -33,10 +33,10 @@ const Avatar = styled.img`
 `
 
 const Button = styled.button`
-  font-size: 25px;
+  font-size: 18px;
   font-weight: bold;
-  margin-top: 24px;
-  margin-right: 35px;
+  margin-top: 13px;
+  margin-right: 11px;
   background-color: #4085de;
   color: white;
   border-radius: 10px;
