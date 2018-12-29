@@ -8,7 +8,7 @@ import { v4 } from 'uuid'
 import { withNamespaces } from 'react-i18next'
 
 const client = axios.create({
-  baseURL: 'http://labzener1.taisa.com/ab/chatbot/chat', //window.chatbotApiEndpoint,
+  baseURL: window.chatbotApiEndpoint, //'http://labzener1.taisa.com/ab/chatbot/chat',
   timeout: 5000,
 })
 
