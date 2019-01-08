@@ -4,6 +4,7 @@ import { withNamespaces } from 'react-i18next'
 import moment from 'moment'
 import 'moment/locale/es'
 import 'moment/locale/ca'
+import icon from './icon'
 
 if(window.chatbotLanguage === 'ca_ES') {
   moment.locale('ca')
@@ -58,7 +59,7 @@ const MessageRow = (props) => {
     <Fragment>
       <MessageContainer>
         <Avatar
-          src="https://assets.dryicons.com/uploads/icon/svg/7790/60371561-878d-4738-a0c5-969635eba49a.svg"
+          src={icon}
         />
         <Sender>
           <SenderHeader>{t('Enviada por')}:</SenderHeader>

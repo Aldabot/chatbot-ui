@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react'
 import ChatBox from './ChatBox'
 import styled from 'styled-components'
 import { withNamespaces } from 'react-i18next'
+import icon from './icon'
+
 
 const Container = styled.div`
   position: fixed;
@@ -33,6 +35,7 @@ const Avatar = styled.img`
 `
 
 const Button = styled.button`
+  position: absolute;
   font-size: 18px;
   font-weight: bold;
   margin-top: 13px;
@@ -41,7 +44,6 @@ const Button = styled.button`
   color: white;
   border-radius: 10px;
   padding: 10px;
-  float: right;
   cursor: pointer;
   &:hover{
     background-color: #4691f2;
@@ -50,7 +52,7 @@ const Button = styled.button`
   @media ( max-width: 768px ) {
     font-size: 15px;
     margin-top: 12px;
-    margin-right: 12px;
+    margin-left: 12px;
   }
 `
 
@@ -75,7 +77,7 @@ class ChatbotContainer extends Component {
       <Fragment>
         <Container open={open} >
           <Avatar
-            src="https://assets.dryicons.com/uploads/icon/svg/7790/60371561-878d-4738-a0c5-969635eba49a.svg"
+            src={icon}
             open={open}
           />
           { !open && <Button onClick={this.openChat}>{t('Preguntar')}</Button>}
