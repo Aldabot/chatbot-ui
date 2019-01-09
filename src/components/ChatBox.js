@@ -7,8 +7,10 @@ import Input from './Input'
 import { v4 } from 'uuid'
 import { withNamespaces } from 'react-i18next'
 
+const constSessionId = v4()
+
 const client = axios.create({
-  baseURL: window.chatbotApiEndpoint, //'http://labzener1.taisa.com/ab/chatbot/chat',
+  baseURL: window.chatbotLanguage === 'ca_ES' ? window.chatbotApiEndpointES : chatbotApiEndpointCAT,
   timeout: 5000,
 })
 
@@ -86,7 +88,7 @@ class ChatBox extends Component {
     try {
       const { data } = await client.post('/', {
         query: text,
-        sessionId: v4()
+        sessionId: constSessionId,
       })
       this.addMessageAndScroll(data.response, false)
     } catch(err) {
