@@ -10,7 +10,7 @@ import { withNamespaces } from 'react-i18next'
 const constSessionId = v4()
 
 const client = axios.create({
-  baseURL: window.chatbotLanguage === 'ca_ES' ? window.chatbotApiEndpointES : chatbotApiEndpointCAT,
+  baseURL: window.chatbotLanguage === 'ca_ES' ? window.chatbotApiEndpointES : chatbotApiEndpointCAT,'
   timeout: 5000,
 })
 
