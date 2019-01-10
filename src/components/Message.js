@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { withNamespaces } from 'react-i18next'
+import Linkify from 'react-linkify'
 import moment from 'moment'
 import 'moment/locale/es'
 import 'moment/locale/ca'
@@ -53,6 +54,9 @@ const Divider = styled.hr`
   border-color: ${({user}) => user ? '#e9e9e9' : 'gray' };
 `
 
+function output(text) {
+}
+
 const MessageRow = (props) => {
   const { user, t } = props
   return (
@@ -74,7 +78,9 @@ const MessageRow = (props) => {
           <MsgHeader>
             { props.user ? 'Pregunta' : t('Respuesta')}
           </MsgHeader>
-          {props.text}
+          <Linkify>
+            {props.text}
+          </Linkify>
         </MsgBox>
       </MessageContainer>
       <Divider user={props.user}/>
