@@ -12,7 +12,7 @@ if(sessionStorage.getItem('chatbotSessionId') === null)
   sessionStorage.setItem('chatbotSessionId', v4());
 
 const client = axios.create({
-  baseURL: window.chatbotLanguage === 'ca_ES' ? window.chatbotApiEndpointES : window.chatbotApiEndpointCAT,
+  baseURL: window.chatbotLanguage === 'ca_ES' ? window.chatbotApiEndpointCAT : window.chatbotApiEndpointES,
   timeout: 5000,
 })
 
