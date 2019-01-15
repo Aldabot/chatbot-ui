@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { withNamespaces } from 'react-i18next'
-import DOMPurify from 'dompurify'
 const showdown = require('showdown')
 import moment from 'moment'
 import 'moment/locale/es'
 import 'moment/locale/ca'
 import icon from './icon'
 
-const mdConverter = new showdown.Converter()
+const mdConverter = new showdown.Converter({openLinksInNewWindow: true})
 
 if(window.chatbotLanguage === 'ca_ES') {
   moment.locale('ca')
@@ -85,7 +84,7 @@ const MessageRow = (props) => {
             user ?
               <span>{props.text}</span>
               :
-              <span dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(mdConverter.makeHtml(props.text))}}></span>
+              <span dangerouslySetInnerHTML={{__html: mdConverter.makeHtml(props.text)}}></span>
           }
         </MsgBox>
       </MessageContainer>
