@@ -62,7 +62,6 @@ const Divider = styled.hr`
 
 const MessageRow = (props) => {
   const { user, t } = props
-  console.log(props.text)
   return (
     <Fragment>
       <MessageContainer>
