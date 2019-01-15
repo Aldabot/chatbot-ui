@@ -79,7 +79,7 @@ class ChatBox extends Component {
     this.state = {
       messages: [{
         user: false,
-        text: <span>{t('Soy el Chatbot de Aigues')}.<br />{t('Por favor, pregúntame algo')} 😊</span>,
+        text: `${t('Soy el Chatbot de Aigues')} \n ${t('Por favor, pregúntame algo')} 😊`,
         time: moment(),
       }]
     }

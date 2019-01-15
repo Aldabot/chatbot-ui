@@ -1,11 +1,14 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { withNamespaces } from 'react-i18next'
-import Linkify from 'react-linkify'
+import DOMPurify from 'dompurify'
+const showdown = require('showdown')
 import moment from 'moment'
 import 'moment/locale/es'
 import 'moment/locale/ca'
 import icon from './icon'
+
+const mdConverter = new showdown.Converter()
 
 if(window.chatbotLanguage === 'ca_ES') {
   moment.locale('ca')
@@ -42,6 +45,9 @@ const Time = styled.div`
 
 const MsgBox = styled.div`
   width: 65%;
+  p {
+    margin: 0;
+  }
 `
 
 const MsgHeader = styled.div`
@@ -54,11 +60,9 @@ const Divider = styled.hr`
   border-color: ${({user}) => user ? '#e9e9e9' : 'gray' };
 `
 
-function output(text) {
-}
-
 const MessageRow = (props) => {
   const { user, t } = props
+  console.log(props.text)
   return (
     <Fragment>
       <MessageContainer>
@@ -78,9 +82,12 @@ const MessageRow = (props) => {
           <MsgHeader>
             { props.user ? 'Pregunta' : t('Respuesta')}
           </MsgHeader>
-          <Linkify>
-            {props.text}
-          </Linkify>
+          {
+            user ?
+              <span>{props.text}</span>
+              :
+              <span dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(mdConverter.makeHtml(props.text))}}></span>
+          }
         </MsgBox>
       </MessageContainer>
       <Divider user={props.user}/>
