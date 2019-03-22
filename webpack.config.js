@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  entry: path.join(__dirname, './src/index.js'),
+  entry: { app: ['babel-polyfill', path.join(__dirname, './src/index.js')] },
   output: {
     path: path.join(__dirname, './dist'),
     filename: 'main.js',
@@ -23,12 +23,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['@babel/preset-env',
-               {
-                 targets: {
-                   node: 8
-                 }
-               }],
+              ['@babel/preset-env'],
               '@babel/preset-react'
             ],
             plugins: [
